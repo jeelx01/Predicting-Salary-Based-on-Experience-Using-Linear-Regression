@@ -28,9 +28,11 @@ model.fit(X_train, y_train)
 st.write("## Enter years of experience to predict salary:")
 experience = st.number_input("Years of Experience", min_value=0.0, step=0.5)
 
-if st.button("Predict Salary"):
-    prediction = model.predict([[experience]])
-    st.success(f"Predicted Salary for {experience} years experience: ₹{prediction[0]:.2f}")
+col1, col2, col3 = st.columns([1, 1, 1])
+with col2:
+    if st.button("Predict Salary"):
+        prediction = model.predict([[experience]])
+        st.success(f"Predicted Salary for {experience} years experience: ₹{prediction[0]:.2f}")
 
 # Step 7: Plotting
 st.write("## Salary vs Experience Graph")
